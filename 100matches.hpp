@@ -19,6 +19,7 @@ class Matches {
     public:
         void PrintMenu(int choice);
         Matches();
+        void InitFields();
 };
 
 #endif

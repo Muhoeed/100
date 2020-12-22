@@ -1,10 +1,14 @@
 #include "100matches.hpp"
 
-Matches::Matches() {
+void Matches::InitFields() {
     count = 100;
     player = 1;
     num = 0;
     correct = true;
+}
+
+Matches::Matches() {
+    InitFields();
 }
 
 void Matches::PrintMenu(int choice) {
