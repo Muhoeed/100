@@ -1,8 +1,8 @@
 #include "100matches.hpp"
 
 int main() {
-	cout << "Test message" << endl;
     Matches m;
+    m.PrintMenu(0);
 
     return 0;
 }

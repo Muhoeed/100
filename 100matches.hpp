@@ -9,14 +9,15 @@
 using namespace std;
 
 class Matches {
-	private:
+    private:
         int count;
         int player;
         int num;
         bool correct;
         int choice;
 		
-	public:
+    public:
+        void PrintMenu(int choice);
 };
 
 #endif
