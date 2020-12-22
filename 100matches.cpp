@@ -62,14 +62,14 @@ int Matches::GameMenu_Main(int choice) {
     do {
         system("cls");
         // PrintMenu(0);
-        cout << "Please select an option: ";
-        cin >> choice;
+        // cout << "Please select an option: ";
+        // cin >> choice;
 
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-            continue;
-        }
+        // if (cin.fail()) {
+        //     cin.clear();
+        //     cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        //     continue;
+        // }
         
         switch (choice) {
         case 1:
