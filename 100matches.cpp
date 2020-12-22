@@ -46,6 +46,18 @@ int Matches::Computer() {
     return num;
 }
 
+bool Matches::WinCheck(int player) {
+    bool wincheck = true;
+
+    if (player == 1)
+        wincheck = true;
+    else
+        wincheck = false;
+
+    return wincheck;
+}
+
+
 int Matches::GameMenu_Main(int choice) {
     do {
         system("cls");

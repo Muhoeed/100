@@ -9,12 +9,12 @@
 using namespace std;
 
 class Matches {
-    private:
-        int count;
-        int player;
-        int num;
-        bool correct;
-        int choice;
+    // private:
+    //     int count;
+    //     int player;
+    //     int num;
+    //     bool correct;
+    //     int choice;
 		
     public:
         int PrintMenu(int choice);
@@ -22,6 +22,7 @@ class Matches {
         int GameStart(int player, bool correct, int num, int count);
         bool Player(int num, int correct, int count);
         int Computer();
+        bool WinCheck(int player);
 };
 
 #endif

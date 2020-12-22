@@ -26,3 +26,7 @@ CTEST(Matches, Player) {
 CTEST(Matches, Computer) {
     ASSERT_INTERVAL(1, 10, m.Computer());
 }
+
+CTEST(Matches, WinCheck) {
+    ASSERT_TRUE(m.WinCheck(1));
+}
