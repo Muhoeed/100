@@ -18,6 +18,7 @@ class Matches {
 		
     public:
         int PrintMenu(int choice);
+        int GameMenu_Main(int choice);
 };
 
 #endif

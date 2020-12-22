@@ -20,3 +20,30 @@ int Matches::PrintMenu(int choice) {
     }
     return choice;
 }
+
+int Matches::GameMenu_Main(int choice) {
+    do {
+        system("cls");
+        // PrintMenu(0);
+        cout << "Please select an option: ";
+        cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            continue;
+        }
+        
+        switch (choice) {
+        case 1:
+            system("cls");
+            choice = 2;
+            break;
+        case 2:
+            choice = 2;
+            break;
+        }
+    } while (choice != 2);
+
+    return choice;
+}
