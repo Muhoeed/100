@@ -54,7 +54,7 @@ void Matches::Computer() {
 }
 
 void Matches::WinCheck() {
-    if (player = 1)
+    if (player == 1)
         cout << "You won!" << endl << endl;
     else
         cout << "You lost!" << endl << endl;
