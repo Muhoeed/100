@@ -30,3 +30,22 @@ void Matches::PrintMenu(int choice) {
         cout << "3. Leave the game" << endl;
     }
 }
+
+void Matches::GameMenu_Main() {
+    do {
+        system("cls");
+        PrintMenu(0);
+        cout << "Please select an option: ";
+        cin >> choice;
+        
+        switch (choice) {
+        case 1:
+            system("cls");
+            choice = 2;
+            break;
+        case 2:
+            choice = 2;
+            break;
+        }
+    } while (choice != 2);
+}

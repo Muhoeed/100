@@ -20,6 +20,7 @@ class Matches {
         void PrintMenu(int choice);
         Matches();
         void InitFields();
+        void GameMenu_Main();
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 int main() {
     Matches m;
-    m.PrintMenu(0);
+    m.GameMenu_Main();
 
     return 0;
 }
