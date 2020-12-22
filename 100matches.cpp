@@ -1,5 +1,12 @@
 #include "100matches.hpp"
 
+Matches::Matches() {
+    count = 100;
+    player = 1;
+    num = 0;
+    correct = true;
+}
+
 void Matches::PrintMenu(int choice) {
     if (choice == 0) {
         cout << "################################################################################################################" << endl;
