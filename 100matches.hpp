@@ -24,6 +24,7 @@ class Matches {
         void GameStart();
         void Player();
         void Computer();
+        void WinCheck();
 };
 
 #endif

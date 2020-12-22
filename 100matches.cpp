@@ -53,6 +53,15 @@ void Matches::Computer() {
     cout << "My turn. I took " << num << " matches." << endl << endl;
 }
 
+void Matches::WinCheck() {
+    if (player = 1)
+        cout << "You won!" << endl << endl;
+    else
+        cout << "You lost!" << endl << endl;
+
+    //GameMenu_Restart();
+}
+
 void Matches::GameMenu_Main() {
     do {
         system("cls");
