@@ -39,6 +39,13 @@ bool Matches::Player(int num, int correct, int count) {
     return correct;
 }
 
+int Matches::Computer() {
+    int num = 1 + rand() % 10;
+
+    //cout << "My turn. I took " << num << " matches." << endl << endl;
+    return num;
+}
+
 int Matches::GameMenu_Main(int choice) {
     do {
         system("cls");

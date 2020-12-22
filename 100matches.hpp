@@ -21,6 +21,7 @@ class Matches {
         int GameMenu_Main(int choice);
         int GameStart(int player, bool correct, int num, int count);
         bool Player(int num, int correct, int count);
+        int Computer();
 };
 
 #endif
