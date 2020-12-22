@@ -7,6 +7,11 @@ using namespace std;
 
 class Matches {
 	private:
+        int count;
+        int player;
+        int num;
+        bool correct;
+        int choice;
 		
 	public:
 };
