@@ -19,3 +19,8 @@ CTEST(Matches, GameStart) {
     Matches m;
     ASSERT_INTERVAL(-100, 0, m.GameStart(1, true, 5, 100));
 }
+
+CTEST(Matches, Player) {
+    Matches m;
+    ASSERT_TRUE(m.Player(6, true, 100));
+}
