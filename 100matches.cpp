@@ -55,3 +55,26 @@ void Matches::GameMenu_Main() {
         }
     } while (choice != 2);
 }
+
+void Matches::GameStart() {
+    do {
+        if (player == 1) {
+            do {
+                //Player();
+            } while (!correct);
+        }
+        else {
+            do {
+                //Computer();
+            } while (!correct);
+        }
+        count -= num;
+
+        if (player == 1)
+            player = 2;
+        else
+            player = 1;
+    } while (count > 0);
+
+    //WinCheck();
+}

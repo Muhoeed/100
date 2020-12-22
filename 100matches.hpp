@@ -21,6 +21,7 @@ class Matches {
         Matches();
         void InitFields();
         void GameMenu_Main();
+        void GameStart();
 };
 
 #endif
