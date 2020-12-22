@@ -37,6 +37,12 @@ void Matches::GameMenu_Main() {
         PrintMenu(0);
         cout << "Please select an option: ";
         cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            continue;
+        }
         
         switch (choice) {
         case 1:
