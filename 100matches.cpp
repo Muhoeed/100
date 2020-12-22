@@ -47,3 +47,26 @@ int Matches::GameMenu_Main(int choice) {
 
     return choice;
 }
+
+int Matches::GameStart(int player, bool correct, int num, int count) {
+    do {
+        if (player == 1) {
+            do {
+                //Player();
+            } while (!correct);
+        }
+        else {
+            do {
+                //Computer();
+            } while (!correct);
+        }
+        count -= num;
+
+        if (player == 1)
+            player = 2;
+        else
+            player = 1;
+    } while (count > 0);
+    //cout << count << endl;
+    return count;
+}
