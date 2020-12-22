@@ -23,6 +23,7 @@ class Matches {
         void GameMenu_Main();
         void GameStart();
         void Player();
+        void Computer();
 };
 
 #endif

@@ -47,6 +47,12 @@ void Matches::Player() {
     cout << endl;
 }
 
+void Matches::Computer() {
+    num = rand() % 10 + 1;
+
+    cout << "My turn. I took " << num << " matches." << endl << endl;
+}
+
 void Matches::GameMenu_Main() {
     do {
         system("cls");
