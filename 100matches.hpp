@@ -22,6 +22,7 @@ class Matches {
         void InitFields();
         void GameMenu_Main();
         void GameStart();
+        void Player();
 };
 
 #endif

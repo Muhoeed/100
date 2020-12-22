@@ -31,6 +31,22 @@ void Matches::PrintMenu(int choice) {
     }
 }
 
+void Matches::Player() {
+    cout << "Your turn. On the table " << count << " matches." << endl;
+    cout << "How many matches will you take?\n";
+
+    cin >> num;
+
+    if (num >= 1 && num <= 10 && num <= count)
+        correct = true;
+    else {
+        cout << "Wrong! Please re-enter!" << endl;
+        correct = false;
+    }
+
+    cout << endl;
+}
+
 void Matches::GameMenu_Main() {
     do {
         system("cls");
