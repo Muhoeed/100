@@ -8,6 +8,7 @@ void Matches::InitFields() {
 }
 
 Matches::Matches() {
+    srand(time(0));
     InitFields();
 }
 
@@ -37,24 +38,30 @@ void Matches::GameMenu_Restart() {
         cout << "Please select an option: ";
         cin >> choice;
 
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            continue;
+        }
+
         switch (choice) {
         case 1:
             system("cls");
             InitFields();
             GameStart();
-            choice = 999;
+            choice = 3;
             break;
         case 2:
             InitFields();
             GameMenu_Main();
-            choice = 999;
+            choice = 3;
             break;
         case 3:
-            choice = 999;
+            choice = 3;
             break;
         }
         system("cls");
-    } while (choice != 999);
+    } while (choice != 3);
 }
 
 void Matches::Player() {
@@ -85,7 +92,7 @@ void Matches::WinCheck() {
     else
         cout << "You lost!" << endl << endl;
 
-    //GameMenu_Restart();
+    GameMenu_Restart();
 }
 
 void Matches::GameMenu_Main() {
@@ -104,6 +111,7 @@ void Matches::GameMenu_Main() {
         switch (choice) {
         case 1:
             system("cls");
+            GameStart();
             choice = 2;
             break;
         case 2:
@@ -117,12 +125,12 @@ void Matches::GameStart() {
     do {
         if (player == 1) {
             do {
-                //Player();
+                Player();
             } while (!correct);
         }
         else {
             do {
-                //Computer();
+                Computer();
             } while (!correct);
         }
         count -= num;
@@ -133,5 +141,5 @@ void Matches::GameStart() {
             player = 1;
     } while (count > 0);
 
-    //WinCheck();
+    WinCheck();
 }
