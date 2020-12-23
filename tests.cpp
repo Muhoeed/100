@@ -30,3 +30,9 @@ CTEST(Matches, Computer) {
 CTEST(Matches, WinCheck) {
     ASSERT_TRUE(m.WinCheck(1));
 }
+
+ CTEST(Matches, GameMenu_Restart) {
+     int ch = 3;
+     ASSERT_INTERVAL(1, 3, m.GameMenu_Restart(ch));
+     ASSERT_EQUAL(3, m.GameMenu_Restart(ch));
+ }

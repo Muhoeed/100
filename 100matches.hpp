@@ -23,6 +23,7 @@ class Matches {
         bool Player(int num, int correct, int count);
         int Computer();
         bool WinCheck(int player);
+        int GameMenu_Restart(int choice);
 };
 
 #endif

@@ -57,19 +57,52 @@ bool Matches::WinCheck(int player) {
     return wincheck;
 }
 
+int Matches::GameMenu_Restart(int choice) {
+    do {
+        //PrintMenu(1);
+        // cout << "Please select an option: ";
+        // cin >> choice;
+
+        // if (cin.fail()) {
+        //     cin.clear();
+        //     cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        //     continue;
+        // }
+
+        switch (choice) {
+        case 1:
+            system("cls");
+            //InitFields();
+            //GameStart();
+            choice = 3;
+            break;
+        case 2:
+            //InitFields();
+            //GameMenu_Main();
+            choice = 3;
+            break;
+        case 3:
+            choice = 3;
+            break;
+        }
+        system("cls");
+    } while (choice != 3);
+
+    return choice;
+}
 
 int Matches::GameMenu_Main(int choice) {
     do {
         system("cls");
         // PrintMenu(0);
-        cout << "Please select an option: ";
-        cin >> choice;
+        // cout << "Please select an option: ";
+        // cin >> choice;
 
-        if (cin.fail()) {
+      /*  if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(),'\n');
             continue;
-        }
+        }*/
         
         switch (choice) {
         case 1:
