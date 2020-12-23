@@ -48,7 +48,7 @@ void Matches::Player() {
 }
 
 void Matches::Computer() {
-    num = rand() % 10 + 1;
+    num = 1 + rand() % 10;
 
     cout << "My turn. I took " << num << " matches." << endl << endl;
 }
