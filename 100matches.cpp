@@ -31,6 +31,32 @@ void Matches::PrintMenu(int choice) {
     }
 }
 
+void Matches::GameMenu_Restart() {
+    do {
+        PrintMenu(1);
+        cout << "Please select an option: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            system("cls");
+            InitFields();
+            GameStart();
+            choice = 999;
+            break;
+        case 2:
+            InitFields();
+            GameMenu_Main();
+            choice = 999;
+            break;
+        case 3:
+            choice = 999;
+            break;
+        }
+        system("cls");
+    } while (choice != 999);
+}
+
 void Matches::Player() {
     cout << "Your turn. On the table " << count << " matches." << endl;
     cout << "How many matches will you take?\n";

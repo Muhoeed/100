@@ -25,6 +25,7 @@ class Matches {
         void Player();
         void Computer();
         void WinCheck();
+        void GameMenu_Restart();
 };
 
 #endif
