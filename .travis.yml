@@ -1,4 +1,4 @@
 language: cpp
-script: make
+script: make all
 after_success:
     - bash <(curl -s https://codecov.io/bash)

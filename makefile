@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -Wall -Werror -coverage
+CFLAGS = -coverage -Wall -Werror
 target = main
 objs   = main.o tests.o 100matches.o
 
