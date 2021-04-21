@@ -1,25 +1,39 @@
-CC = g++
-CFLAGS = -Wall -Werror
-target = main
-objs   = main.o 100matches.o
+CXXFLAGS       = -Wall -Werror
+CXXFLAGS_TEST  = -Wall
 
-all: $(target)
-	./main
-	
-deps: $(patsubst %.o, %.d, $(objs))
--include $(deps)
-DEPFLAGS = -MMD -MF $(@:.o = .d)
+BINDIR           = bin
+SRCDIR           = src
+TESTDIR          = test
+BUILD_SRCDIR     = build/src
+BUILD_TESTDIR    = build/test
 
-main: $(objs)
-	$(CC) $(CFLAGS) -o $@ $^
+OBJECT          = $(patsubst $(SRCDIR)/%.cpp,  $(BUILD_SRCDIR)/%.o,  $(wildcard $(SRCDIR)/*.cpp))
+OBJECT_TEST     = $(patsubst $(TESTDIR)/%.cpp, $(BUILD_TESTDIR)/%.o, $(wildcard $(TESTDIR)/*.cpp))
+TARGET          = $(BINDIR)/100
+TARGET_TEST     = $(BINDIR)/100test
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< $(DEPFLAGS)
+.PHONY: all test clean
 
-clean:
-	rm -f $(target) $(objs) $(deps)
+all: $(TARGET)
+	$(TARGET)
 
-run:
-	./main
+$(TARGET): $(OBJECT)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-.PHONY: all run
+$(BUILD_SRCDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/100matches.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+test: $(TARGET_TEST)
+	$(TARGET_TEST)
+
+$(TARGET_TEST): $(OBJECT_TEST)
+	$(CXX) -o $@ $^
+
+$(BUILD_TESTDIR)/%.o: $(TESTDIR)/%.cpp thirdparty/ctest.h
+	$(CXX) -c $< -o $@
+
+cln:
+	rm -f $(TARGET) $(OBJECT)
+
+tcln:
+	rm -f $(TARGET_TEST) $(OBJECT_TEST)
