@@ -33,22 +33,23 @@ void Matches::PrintMenu(string choice) {
 }
 
 bool Matches::IsCorrectInput(int *choice) {
-    cout << "Please select an option: ";
     cin >> *choice;
 
     if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
-        return true;
+        return false;
     }
 
-    return false;
+    return true;
 }
 
 void Matches::GameMenu_Restart() {
     do {
         PrintMenu("restart");
-        if (IsCorrectInput(&choice)) {
+        cout << "Please select an option: ";
+
+        if (!IsCorrectInput(&choice)) {
             continue;
         }
 
@@ -78,7 +79,9 @@ void Matches::Player(int count, int num) {
     cout << "Your turn. On the table " << count << " matches." << endl;
     cout << "How many matches will you take?\n";
 
-    cin >> num;
+    if (!IsCorrectInput(&num)) {
+        num = 11;
+    }
 
     if (num >= 1 && num <= 10 && num <= count)
         correct = true;
@@ -109,7 +112,9 @@ void Matches::GameMenu_Main() {
     do {
         system("cls");
         PrintMenu("main");
-        if (IsCorrectInput(&choice)) {
+        cout << "Please select an option: ";
+        
+        if (!IsCorrectInput(&choice)) {
             continue;
         }
 
@@ -128,6 +133,7 @@ void Matches::GameMenu_Main() {
 
 void Matches::GameStart() {
     do {
+
         if (player == 1) {
             do {
                 Player(count, num);
@@ -138,12 +144,14 @@ void Matches::GameStart() {
                 Computer();
             } while (!correct);
         }
+
         count -= num;
 
         if (player == 1)
             player = 2;
         else
             player = 1;
+
     } while (count > 0);
 
     WinCheck();
