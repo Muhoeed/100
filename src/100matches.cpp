@@ -12,8 +12,8 @@ Matches::Matches() {
     InitFields();
 }
 
-void Matches::PrintMenu(int choice) {
-    if (choice == 0) {
+void Matches::PrintMenu(string choice) {
+    if (choice == "main") {
         cout << "################################################################################################################" << endl;
         cout << "                        Welcome to the game of 100 matches." << endl;
         cout << "Game rules:" << endl;
@@ -24,7 +24,7 @@ void Matches::PrintMenu(int choice) {
         cout << "1. Play the game" << endl;
         cout << "2. Exit" << endl;
     }
-    else if (choice == 1) {
+    else if (choice == "restart") {
         cout << "Want to play again?" << endl;
         cout << "1. Yes" << endl;
         cout << "2. Exit to the menu" << endl;
@@ -32,19 +32,28 @@ void Matches::PrintMenu(int choice) {
     }
 }
 
+bool Matches::IsCorrectInput(int *choice) {
+    cout << "Please select an option: ";
+    cin >> *choice;
+
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        return true;
+    }
+
+    return false;
+}
+
 void Matches::GameMenu_Restart() {
     do {
-        PrintMenu(1);
-        cout << "Please select an option: ";
-        cin >> choice;
-
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        PrintMenu("restart");
+        if (IsCorrectInput(&choice)) {
             continue;
         }
 
         switch (choice) {
+			
         case 1:
             system("cls");
             InitFields();
@@ -59,12 +68,13 @@ void Matches::GameMenu_Restart() {
         case 3:
             choice = 3;
             break;
+			
         }
         system("cls");
     } while (choice != 3);
 }
 
-void Matches::Player() {
+void Matches::Player(int count, int num) {
     cout << "Your turn. On the table " << count << " matches." << endl;
     cout << "How many matches will you take?\n";
 
@@ -98,16 +108,11 @@ void Matches::WinCheck() {
 void Matches::GameMenu_Main() {
     do {
         system("cls");
-        PrintMenu(0);
-        cout << "Please select an option: ";
-        cin >> choice;
-
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        PrintMenu("main");
+        if (IsCorrectInput(&choice)) {
             continue;
         }
-        
+
         switch (choice) {
         case 1:
             system("cls");
@@ -125,7 +130,7 @@ void Matches::GameStart() {
     do {
         if (player == 1) {
             do {
-                Player();
+                Player(count, num);
             } while (!correct);
         }
         else {

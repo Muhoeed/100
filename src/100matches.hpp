@@ -17,12 +17,13 @@ class Matches {
         int choice;
 		
     public:
-        void PrintMenu(int choice);
+        void PrintMenu(string choice);
         Matches();
         void InitFields();
         void GameMenu_Main();
         void GameStart();
-        void Player();
+        void Player(int count, int num);
+        bool IsCorrectInput(int *choice);
         void Computer();
         void WinCheck();
         void GameMenu_Restart();
