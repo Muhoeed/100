@@ -1,5 +1,5 @@
-CXXFLAGS       = -Wall -Werror
-CXXFLAGS_TEST  = -Wall
+CXXFLAGS         = -Wall -Werror
+CXXFLAGS_TEST    = -Wall
 
 BINDIR           = bin
 SRCDIR           = src
@@ -11,6 +11,9 @@ OBJECT          = $(patsubst $(SRCDIR)/%.cpp,  $(BUILD_SRCDIR)/%.o,  $(wildcard 
 OBJECT_TEST     = $(patsubst $(TESTDIR)/%.cpp, $(BUILD_TESTDIR)/%.o, $(wildcard $(TESTDIR)/*.cpp))
 TARGET          = $(BINDIR)/100
 TARGET_TEST     = $(BINDIR)/100test
+
+DIRS 			= $(BUILD_SRCDIR) $(BUILD_TESTDIR) $(BINDIR)
+$(shell mkdir -p $(DIRS))
 
 .PHONY: all test clean
 
