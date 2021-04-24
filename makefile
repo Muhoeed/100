@@ -1,5 +1,5 @@
-CXXFLAGS       = -Wall -Werror
-CXXFLAGS_TEST  = -Wall
+CXXFLAGS         = -Wall -Werror
+CXXFLAGS_TEST    = -Wall
 
 BINDIR           = bin
 SRCDIR           = src
@@ -12,6 +12,9 @@ OBJECT_TEST     = $(patsubst $(TESTDIR)/%.cpp, $(BUILD_TESTDIR)/%.o, $(wildcard 
 TARGET          = $(BINDIR)/100
 TARGET_TEST     = $(BINDIR)/100test
 
+DIRS 			= $(BUILD_SRCDIR) $(BUILD_TESTDIR) $(BINDIR)
+$(shell mkdir -p $(DIRS))
+
 .PHONY: all test clean
 
 all: $(TARGET)
@@ -23,10 +26,10 @@ $(TARGET): $(OBJECT)
 $(BUILD_SRCDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/100matches.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-test: $(TARGET_TEST)
+t: $(TARGET_TEST)
 	$(TARGET_TEST)
 
-$(TARGET_TEST): $(OBJECT_TEST)
+$(TARGET_TEST): $(OBJECT_TEST) $(BUILD_SRCDIR)/100matches.o
 	$(CXX) -o $@ $^
 
 $(BUILD_TESTDIR)/%.o: $(TESTDIR)/%.cpp thirdparty/ctest.h
