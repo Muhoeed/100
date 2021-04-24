@@ -13,7 +13,7 @@ Matches::Matches() {
 }
 
 void Matches::PrintMenu(string choice) {
-    if (choice == "main") {
+    if (choice == "main_menu") {
         cout << "################################################################################################################" << endl;
         cout << "                        Welcome to the game of 100 matches." << endl;
         cout << "Game rules:" << endl;
@@ -30,11 +30,28 @@ void Matches::PrintMenu(string choice) {
         cout << "2. Exit to the menu" << endl;
         cout << "3. Leave the game" << endl;
     }
+    else if (choice == "player_turn") {
+        cout << "Your turn. On the table " << count << " matches." << endl;
+        cout << "How many matches will you take?\n";
+    }
+    else if (choice == "option_select") {
+        cout << "Please select an option: ";
+    }
+    else if (choice == "computer_turn") {
+        cout << "My turn. I took " << num << " matches." << endl << endl;
+    }
+    else if (choice == "win_check") {
+        if (player == 1)
+            cout << "You won!" << endl << endl;
+        else
+            cout << "You lost!" << endl << endl;
+    }
+    else if (choice == "re_enter") {
+        cout << "Wrong! Please re-enter!" << endl;
+    }               
 }
 
-bool Matches::IsCorrectInput(int *choice) {
-    cin >> *choice;
-
+bool Matches::IsCorrectInput() {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -47,9 +64,10 @@ bool Matches::IsCorrectInput(int *choice) {
 void Matches::GameMenu_Restart() {
     do {
         PrintMenu("restart");
-        cout << "Please select an option: ";
+        PrintMenu("option_select");
 
-        if (!IsCorrectInput(&choice)) {
+        cin >> choice;
+        if (!IsCorrectInput()) {
             continue;
         }
 
@@ -75,46 +93,33 @@ void Matches::GameMenu_Restart() {
     } while (choice != 3);
 }
 
-void Matches::Player(int count, int num) {
-    cout << "Your turn. On the table " << count << " matches." << endl;
-    cout << "How many matches will you take?\n";
-
-    if (!IsCorrectInput(&num)) {
+bool Matches::Player(int &num, int count) {
+    if (!IsCorrectInput()) {
         num = 11;
     }
 
     if (num >= 1 && num <= 10 && num <= count)
         correct = true;
     else {
-        cout << "Wrong! Please re-enter!" << endl;
         correct = false;
     }
 
-    cout << endl;
+    return correct;
 }
 
-void Matches::Computer() {
+int Matches::Computer() {
     num = 1 + rand() % 10;
-
-    cout << "My turn. I took " << num << " matches." << endl << endl;
-}
-
-void Matches::WinCheck() {
-    if (player == 1)
-        cout << "You won!" << endl << endl;
-    else
-        cout << "You lost!" << endl << endl;
-
-    GameMenu_Restart();
+    return num;
 }
 
 void Matches::GameMenu_Main() {
     do {
         system("cls");
-        PrintMenu("main");
-        cout << "Please select an option: ";
+        PrintMenu("main_menu");
+        PrintMenu("option_select");
         
-        if (!IsCorrectInput(&choice)) {
+        cin >> choice;
+        if (!IsCorrectInput()) {
             continue;
         }
 
@@ -133,15 +138,21 @@ void Matches::GameMenu_Main() {
 
 void Matches::GameStart() {
     do {
-
         if (player == 1) {
             do {
-                Player(count, num);
+                PrintMenu("player_turn");
+                cin >> num;
+                Player(num, count);
+                if (!correct) {
+                    PrintMenu("re_enter");
+                }
+                cout << endl;
             } while (!correct);
         }
         else {
             do {
                 Computer();
+                PrintMenu("computer_turn");
             } while (!correct);
         }
 
@@ -154,5 +165,6 @@ void Matches::GameStart() {
 
     } while (count > 0);
 
-    WinCheck();
+    PrintMenu("win_check");
+    GameMenu_Restart();
 }

@@ -22,10 +22,9 @@ class Matches {
         void InitFields();
         void GameMenu_Main();
         void GameStart();
-        void Player(int count, int num);
-        bool IsCorrectInput(int *choice);
-        void Computer();
-        void WinCheck();
+        bool Player(int &num, int count);
+        bool IsCorrectInput();
+        int Computer();
         void GameMenu_Restart();
 };
 

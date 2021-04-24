@@ -23,10 +23,10 @@ $(TARGET): $(OBJECT)
 $(BUILD_SRCDIR)/%.o: $(SRCDIR)/%.cpp $(SRCDIR)/100matches.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-test: $(TARGET_TEST)
+t: $(TARGET_TEST)
 	$(TARGET_TEST)
 
-$(TARGET_TEST): $(OBJECT_TEST)
+$(TARGET_TEST): $(OBJECT_TEST) $(BUILD_SRCDIR)/100matches.o
 	$(CXX) -o $@ $^
 
 $(BUILD_TESTDIR)/%.o: $(TESTDIR)/%.cpp thirdparty/ctest.h
